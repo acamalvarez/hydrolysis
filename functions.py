@@ -19,12 +19,13 @@ def X2(y_actual, y_pred, n):
 
     return ssres / N
 
+
 def plot_several(listFiles, title, legend):
     for i in listFiles:
         plt.plot(Hydrolysis_file(i).time_min,
          Hydrolysis_file(i).alphaNH(), 'o', fillstyle='none')
     
-    plt.xlabel('time / min')
+    plt.xlabel('Time / min')
     plt.ylabel('P / mM')
     plt.title(title)
     plt.legend(legend)
@@ -33,35 +34,56 @@ def plot_several(listFiles, title, legend):
 
 def a_function(x, k2, Ks, p):
 
-    return k2 * x[1] * x[0] * Parameters.Kp * Ks / \
-        (Parameters.Km * Ks * p + Ks * Parameters.Kp * x[0] + Parameters.Kp * x[0]**2)
+    # return k2 * x[1] * x[0] * Parameters.Kp * Ks / \
+    #     (Parameters.Km * Ks * p + Ks * Parameters.Kp * x[0] + Parameters.Kp * x[0]**2)
+
+    return  k2 * x[1] * x[0] * Parameters.Kp / (Parameters.Km * p + Parameters.Kp * x[0])
 
 
 def b_function(s0, k3):
 
-    Km = Parameters.Km
-    Ks = Parameters.Ks
-    Kp = Parameters.Kp
-    k2 = Parameters.k2
-    p = Parameters.p
+    # Km = Parameters.Km
+    # Ks = Parameters.Ks
+    # Kp = Parameters.Kp
+    # k2 = Parameters.k2
+    # p = Parameters.p
 
-    num = k3 * Km * Ks * Kp
-    den = k2 * (Km * Ks * p + Ks * Kp * s0 + Kp * s0**2)
+    # num = k3 * Km * Ks * Kp
+    # den = k2 * (Km * Ks * p + Ks * Kp * s0 + Kp * s0**2)
 
-    return num / den
+    # return num / den
 
-def plot_final(file, s0, e0):
+    return k3 * Parameters.Km * Parameters.Kp / (Parameters.k2 * (Parameters.Km * Parameters.p + Parameters.Kp * s0))
 
-    time = np.arange(0, 60, 0.1)
+def plot_final(files, s0s, e0, legends):
 
-    plt.plot(Hydrolysis_file(file).time_min,
-         Hydrolysis_file(file).alphaNH(), 'o', fillstyle='none')
+    fig = plt.figure(num='Hydrolysis curves with the same parameters')
+    ax = fig.add_subplot(111)
 
-    a = a_function([s0, e0], Parameters.k2, Parameters.Ks, Parameters.p)
-    b = b_function(s0, Parameters.k3)
+    symbols = ['o', 's', '^', 'v', '*']
+    markers_on = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
 
-    P = (1 / b) * np.log(a * b * time + 1)
+    for i in np.arange(len(files)):
 
-    plt.plot(time, P)
+        time = Hydrolysis_file(files[i]).time_min
+
+        ax.plot(Hydrolysis_file(files[i]).time_min,
+            Hydrolysis_file(files[i]).alphaNH(), symbols[i], fillstyle='none', label=legends[i])
+
+        a = a_function([s0s[i], e0], Parameters.k2, Parameters.Ks, Parameters.p)
+        b = b_function(s0s[i], Parameters.k3)
+
+        P = (1 / b) * np.log(a * b * time + 1)
+
+        ax.plot(time, P)
+
+        R2 = coeff_determination(Hydrolysis_file(files[i]).alphaNH(), P)
+
+        print('R^2 =', np.round(R2, 3))
+
+    ax.set_xlabel('Time / min', fontweight='bold', fontsize=12)
+    ax.set_ylabel('P / mM', fontweight='bold', fontsize=12)
+    ax.legend()
+    plt.tight_layout()
 
     plt.show()

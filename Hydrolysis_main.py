@@ -15,95 +15,73 @@ hC2NI = np.array([0, 5.723011831, 7.09950903, 8.130385719,
 # fit_Qi(t=tC2NI, h=hC2NI, function='sp', e0=2.96, s0=30)
 
 
-
-
 # plot_several([Files.Small.s5e1, Files.Small.s10e1, Files.Small.s15e1,
-#             Files.Small.s30e1, Files.Small.s40e1], title='',
-#             legend=['5 g/L', '10 g/L', '15 g/L', '30 g/L', '40 g/L'])
+#             Files.Small.s20e1, Files.Small.s40e1], title='',
+#             legend=['5 g/L', '10 g/L', '15 g/L', '20 g/L', '40 g/L'])
 
 
 
 # fit_Qi(t=Hydrolysis_file(Files.Small.s5e1).time_min,
-#                h=Hydrolysis_file(Files.Small.s5e1).alphaNH(),
+#                P=Hydrolysis_file(Files.Small.s5e1).alphaNH(),
 #                function='ab_Valencia', s0=5*Parameters.Htot, e0=1)
 
 # fit_Qi(t=Hydrolysis_file(Files.Small.s10e1).time_min,
-#                h=Hydrolysis_file(Files.Small.s10e1).alphaNH(),
+#                P=Hydrolysis_file(Files.Small.s10e1).alphaNH(),
 #                function='ab_Valencia', s0=10*Parameters.Htot, e0=1)
 
 # fit_Qi(t=Hydrolysis_file(Files.Small.s15e1).time_min,
-#                h=Hydrolysis_file(Files.Small.s15e1).alphaNH(),
+#                P=Hydrolysis_file(Files.Small.s15e1).alphaNH(),
 #                function='ab_Valencia', s0=15*Parameters.Htot, e0=1)
 
 # fit_Qi(t=Hydrolysis_file(Files.Small.s20e1).time_min,
-#                h=Hydrolysis_file(Files.Small.s20e1).alphaNH(),
+#                P=Hydrolysis_file(Files.Small.s20e1).alphaNH(),
 #                function='ab_Valencia', s0=20*Parameters.Htot, e0=1)
 
 # fit_Qi(t=Hydrolysis_file(Files.Small.s25e1).time_min,
-#                h=Hydrolysis_file(Files.Small.s25e1).alphaNH(),
+#                P=Hydrolysis_file(Files.Small.s25e1).alphaNH(),
 #                function='ab_Valencia', s0=25*Parameters.Htot, e0=1)
 
 # fit_Qi(t=Hydrolysis_file(Files.Small.s30e1).time_min,
-#                 h=Hydrolysis_file(Files.Small.s30e1).alphaNH(),
+#                 P=Hydrolysis_file(Files.Small.s30e1).alphaNH(),
 #                 function='ab_Valencia', s0=30*Parameters.Htot, e0=1)
 
 # fit_Qi(t=Hydrolysis_file(Files.Small.s40e1).time_min,
-#                 h=Hydrolysis_file(Files.Small.s40e1).alphaNH(),
+#                 P=Hydrolysis_file(Files.Small.s40e1).alphaNH(),
 #                 function='ab_Valencia', s0=40*Parameters.Htot, e0=1)
 
 
 
 
 
+fit_Qi(t=Hydrolysis_file(Files.Small.s5e1).time_min,
+               P=Hydrolysis_file(Files.Small.s5e1).alphaNH(),
+               function='p_Valencia', s0=5*Parameters.Htot, e0=1)
+
+fit_Qi(t=Hydrolysis_file(Files.Small.s10e1).time_min,
+               P=Hydrolysis_file(Files.Small.s10e1).alphaNH(),
+               function='p_Valencia', s0=10*Parameters.Htot, e0=1)
+
+fit_Qi(t=Hydrolysis_file(Files.Small.s15e1).time_min,
+               P=Hydrolysis_file(Files.Small.s15e1).alphaNH(),
+               function='p_Valencia', s0=15*Parameters.Htot, e0=1)
+
+fit_Qi(t=Hydrolysis_file(Files.Small.s20e1).time_min,
+               P=Hydrolysis_file(Files.Small.s20e1).alphaNH(),
+               function='p_Valencia', s0=20*Parameters.Htot, e0=1)
+
+fit_Qi(t=Hydrolysis_file(Files.Small.s25e1).time_min,
+               P=Hydrolysis_file(Files.Small.s25e1).alphaNH(),
+               function='p_Valencia', s0=25*Parameters.Htot, e0=1)
+
+fit_Qi(t=Hydrolysis_file(Files.Small.s30e1).time_min,
+               P=Hydrolysis_file(Files.Small.s30e1).alphaNH(),
+               function='p_Valencia', s0=30*Parameters.Htot, e0=1)
+
+fit_Qi(t=Hydrolysis_file(Files.Small.s40e1).time_min,
+               P=Hydrolysis_file(Files.Small.s40e1).alphaNH(),
+               function='p_Valencia', s0=40*Parameters.Htot, e0=1)
 
 
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s10e1).time_min,
-#                      h=Hydrolysis_file(Files.Large.s10e1).alphaNH(),
-#                      function='a_b', s0=10, e0=1)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s10e2).time_min,
-#                      h=Hydrolysis_file(Files.Large.s10e2).alphaNH(),
-#                      function='a_b', s0=10, e0=2)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s10e3).time_min,
-#                      h=Hydrolysis_file(Files.Large.s10e3).alphaNH(),
-#                      function='a_b', s0=10, e0=3)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s30e3).time_min,
-#                      h=Hydrolysis_file(Files.Large.s30e3).alphaNH(),
-#                      function='a_b', s0=30, e0=3)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s40e3).time_min,
-#                      h=Hydrolysis_file(Files.Large.s40e3).alphaNH(),
-#                      function='a_b', s0=40, e0=3)
-
-
-
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s4e3).time_min,
-#                      h=Hydrolysis_file(Files.Large.s4e3).alphaNH(),
-#                      function='a_b', s0=4.4, e0=3)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s8e16).time_min,
-#                      h=Hydrolysis_file(Files.Large.s8e16).alphaNH(),
-#                      function='a_b', s0=8, e0=1.6)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s20e3).time_min,
-#                      h=Hydrolysis_file(Files.Large.s20e3).alphaNH(),
-#                      function='a_b', s0=20, e0=3)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s35e3).time_min,
-#                      h=Hydrolysis_file(Files.Large.s35e3).alphaNH(),
-#                      function='a_b', s0=35, e0=3)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s40e4).time_min,
-#                      h=Hydrolysis_file(Files.Large.s40e4).alphaNH(),
-#                      function='a_b', s0=40, e0=4)
-
-# fit_Qi(t=Hydrolysis_file(Files.Large.s40e8).time_min,
-#                      h=Hydrolysis_file(Files.Large.s40e8).alphaNH(),
-#                      function='a_b', s0=40, e0=8)
 
 
 

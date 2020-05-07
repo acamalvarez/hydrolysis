@@ -19,15 +19,15 @@ class Bounds:
 
 
     # product inhibition
-    ####### k2,  k3,  Km,      Kp,         p
-    lb_p = [0,   0,   117.449, 22.3939,    0]
-    ub_p = [1e4, 1e4, 117.451, 22.3941,    1e4]
+    ####### k2,  p,   k3
+    lb_p = [0,   0,   0]
+    ub_p = [1e4, 1e4, 1e4]
 
 
     # substrate and product inhibition
-    ## k2, k3, Km, Kp, p, Ks
-    lb_sp = [0, 0, 43.91, 0, 0, 0]
-    ub_sp = [1e4, 1e4, 43.93, 1e4, 1e4, 1e4]
+    ##      k2,   k3,  Km,  Kp, p, Ks
+    lb_sp = [0,   0,   0,   0]
+    ub_sp = [1e4, 1e4, 1e4, 1e4]
 
 
     # product inhibition Camilo

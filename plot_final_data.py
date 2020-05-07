@@ -1,21 +1,14 @@
 from functions import plot_final
 from parameters import Parameters
 from files import Files
+import numpy as np
 
 
 
+files = [Files.Small.s5e1, Files.Small.s10e1, Files.Small.s15e1, Files.Small.s30e1]
+s0s = [5 * Parameters.Htot,  10 * Parameters.Htot,  15 * Parameters.Htot,  30 * Parameters.Htot]
+legends = ['5 g/L', '10 g/L', '15 g/L', '30 g/L']
 
-### s0 = 5, e0 = 1
-plot_final(Files.Small.s5e1, 5 * Parameters.Htot, 1)
 
-### s0 = 10, e0 = 1
-plot_final(Files.Small.s10e1, 10 * Parameters.Htot, 1)
+plot_final(files, s0s, 1, legends)
 
-### s0 = 15, e0 = 1
-plot_final(Files.Small.s15e1, 15 * Parameters.Htot, 1)
-
-### s0 = 30, e0 = 1
-plot_final(Files.Small.s30e1, 30 * Parameters.Htot, 1)
-
-### s0 = 40, e0 = 1
-plot_final(Files.Small.s40e1, 40 * Parameters.Htot, 1)
