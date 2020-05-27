@@ -3,6 +3,7 @@ from process_file import Hydrolysis_file
 import matplotlib.pyplot as plt
 from parameters import Parameters
 
+
 def coeff_determination(y_actual, y_pred):
     ymean = np.mean(y_actual)
     sstot = np.sum((y_actual - ymean)**2)
@@ -20,16 +21,22 @@ def X2(y_actual, y_pred, n):
     return ssres / N
 
 
-def plot_several(listFiles, title, legend):
+def plot_several(listFiles, title, legend, save=""):
     for i in listFiles:
         plt.plot(Hydrolysis_file(i).time_min,
-         Hydrolysis_file(i).alphaNH(), 'o', fillstyle='none')
+         Hydrolysis_file(i).alphaNH(), 'o', fillstyle='none',
+         markevery=0.05)
     
-    plt.xlabel('Time / min')
-    plt.ylabel('P / mM')
-    plt.title(title)
-    plt.legend(legend)
-    plt.show()
+    plt.xlabel('Time (min)', fontweight='bold')
+    plt.ylabel('P (mM)', fontweight='bold')
+    plt.legend(legend, loc=2)
+    plt.ylim([0, 37])
+    plt.tight_layout()
+
+    if save != "":
+        plt.savefig(save)
+
+    else: plt.show()
 
 
 def a_function(x, k2, Ks, p):
@@ -61,7 +68,7 @@ def plot_final(files, s0s, e0, legends):
     ax = fig.add_subplot(111)
 
     symbols = ['o', 's', '^', 'v', '*']
-    markers_on = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+    # markers_on = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
 
     for i in np.arange(len(files)):
 
@@ -81,9 +88,12 @@ def plot_final(files, s0s, e0, legends):
 
         print('R^2 =', np.round(R2, 3))
 
-    ax.set_xlabel('Time / min', fontweight='bold', fontsize=12)
-    ax.set_ylabel('P / mM', fontweight='bold', fontsize=12)
+    ax.set_xlabel('Time (min)', fontweight='bold', fontsize=12)
+    ax.set_ylabel('P (mM)', fontweight='bold', fontsize=12)
     ax.legend()
     plt.tight_layout()
 
-    plt.show()
+    plt.savefig('Hydrolysis curves.svg')
+
+
+
